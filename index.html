@@ -19,16 +19,16 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
 
         header {
             background: rgba(255, 255, 255, 0.95);
             padding: 20px;
             border-radius: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             text-align: center;
         }
@@ -36,24 +36,66 @@
         h1 {
             color: #667eea;
             margin-bottom: 10px;
-            font-size: 2.5em;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
         }
 
         .tagline {
             color: #666;
-            font-size: 1.1em;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+        }
+
+        .auth-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .main-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .card {
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
@@ -61,7 +103,7 @@
         .card h2 {
             color: #667eea;
             margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             border-bottom: 2px solid #667eea;
             padding-bottom: 10px;
         }
@@ -75,6 +117,7 @@
             margin-bottom: 5px;
             font-weight: 600;
             color: #555;
+            font-size: 14px;
         }
 
         input, select, textarea {
@@ -109,13 +152,19 @@
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .frequency-display {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            font-size: 2em;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             font-weight: bold;
             margin: 15px 0;
         }
@@ -126,6 +175,7 @@
             margin: 10px 0;
             text-align: center;
             font-weight: 600;
+            font-size: 14px;
         }
 
         .status.online {
@@ -138,25 +188,31 @@
             color: #721c24;
         }
 
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
         .photo-preview {
             max-width: 100%;
-            max-height: 300px;
+            max-height: 250px;
             margin: 15px 0;
             border-radius: 10px;
             display: none;
         }
 
         .connections-list {
-            max-height: 400px;
+            max-height: 350px;
             overflow-y: auto;
         }
 
         .connection-item {
             background: #f8f9fa;
-            padding: 15px;
-            margin: 10px 0;
+            padding: 12px;
+            margin: 8px 0;
             border-radius: 8px;
             border-left: 4px solid #667eea;
+            font-size: 14px;
         }
 
         .connection-item strong {
@@ -165,7 +221,7 @@
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin: 20px 0;
         }
@@ -179,12 +235,12 @@
         }
 
         .stat-box .number {
-            font-size: 2em;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             font-weight: bold;
         }
 
         .stat-box .label {
-            font-size: 0.9em;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
             opacity: 0.9;
         }
 
@@ -194,9 +250,42 @@
             border-radius: 8px;
             margin: 10px 0;
             border-left: 4px solid #2196f3;
+            font-size: 14px;
+        }
+
+        .user-profile {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .user-profile.active {
+            display: block;
+        }
+
+        .user-profile h3 {
+            margin-bottom: 10px;
+        }
+
+        .logout-btn {
+            background: rgba(255,255,255,0.2);
+            margin-top: 10px;
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none !important;
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
             .main-grid {
                 grid-template-columns: 1fr;
             }
@@ -204,9 +293,27 @@
             .stats {
                 grid-template-columns: 1fr;
             }
-            
-            h1 {
-                font-size: 1.8em;
+
+            .card {
+                padding: 15px;
+            }
+
+            .auth-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+
+            .stat-box {
+                padding: 15px;
+            }
+
+            input, select, textarea, button {
+                font-size: 16px; /* Prevents zoom on iOS */
             }
         }
 
@@ -225,6 +332,41 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .photo-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .photo-info {
+            padding: 10px;
+        }
+
+        .photo-info .caption {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .photo-info .user {
+            font-size: 12px;
+            color: #999;
+        }
     </style>
 </head>
 <body>
@@ -234,25 +376,34 @@
             <p class="tagline">Connect with people across India through server frequencies</p>
         </header>
 
-        <div class="stats">
-            <div class="stat-box">
-                <div class="number" id="totalUsers">0</div>
-                <div class="label">Total Users</div>
-            </div>
-            <div class="stat-box">
-                <div class="number" id="activeConnections">0</div>
-                <div class="label">Active Now</div>
-            </div>
-            <div class="stat-box">
-                <div class="number" id="totalPhotos">0</div>
-                <div class="label">Photos Shared</div>
-            </div>
+        <!-- User Profile (shown when logged in) -->
+        <div class="user-profile" id="userProfile">
+            <h3>👤 <span id="profileName"></span></h3>
+            <p>📍 <span id="profileLocation"></span></p>
+            <p>📡 Frequency: <span id="profileFrequency"></span> MHz</p>
+            <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
 
-        <div class="main-grid">
-            <!-- Registration Card -->
-            <div class="card">
-                <h2>📝 Register / Connect</h2>
+        <!-- Auth Section (Login/Register) -->
+        <div class="auth-section" id="authSection">
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchTab('register')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div class="tab-content active" id="loginTab">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="loginPhone" placeholder="+91 XXXXXXXXXX" required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div class="tab-content" id="registerTab">
                 <form id="registerForm">
                     <div class="form-group">
                         <label>Your Name</label>
@@ -284,17 +435,33 @@
                         <label>Phone Number</label>
                         <input type="tel" id="userPhone" placeholder="+91 XXXXXXXXXX" required>
                     </div>
-                    <button type="submit">Connect to Network</button>
+                    <button type="submit">Register & Connect</button>
                 </form>
-                <div id="connectionStatus" class="status offline" style="display:none;">
-                    Offline
-                </div>
             </div>
+        </div>
 
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="number" id="totalUsers">0</div>
+                <div class="label">Total Users</div>
+            </div>
+            <div class="stat-box">
+                <div class="number" id="activeConnections">0</div>
+                <div class="label">Active Now</div>
+            </div>
+            <div class="stat-box">
+                <div class="number" id="totalPhotos">0</div>
+                <div class="label">Photos Shared</div>
+            </div>
+        </div>
+
+        <!-- Main Content (shown when logged in) -->
+        <div class="main-grid hidden" id="mainContent">
             <!-- Server Frequency Card -->
             <div class="card">
                 <h2>📡 Server Frequency</h2>
-                <p style="margin-bottom: 15px;">Your unique connection frequency:</p>
+                <p style="margin-bottom: 15px; font-size: 14px;">Your unique connection frequency:</p>
                 <div class="frequency-display" id="frequencyDisplay">
                     XXX.XXX MHz
                 </div>
@@ -327,39 +494,71 @@
             <div class="card">
                 <h2>👥 Active Connections</h2>
                 <div class="connections-list" id="connectionsList">
-                    <p style="text-align: center; color: #999;">No active connections yet</p>
+                    <p style="text-align: center; color: #999; font-size: 14px;">No active connections yet</p>
                 </div>
             </div>
         </div>
 
-        <!-- Messages Section -->
-        <div class="card">
-            <h2>💬 Network Messages</h2>
-            <div id="messagesContainer">
-                <p style="text-align: center; color: #999;">Connect to see messages</p>
+        <!-- Photo Gallery -->
+        <div class="card hidden" id="photoGallerySection">
+            <h2>📷 Photo Gallery</h2>
+            <div class="photo-gallery" id="photoGallery">
+                <p style="text-align: center; color: #999;">No photos yet</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Simulated Backend API
-        const API_BASE = 'https://api.nationalconnect.example.com'; // Replace with actual backend
-        
         let currentUser = null;
         let userFrequency = null;
         let connections = [];
         let photos = [];
+        let allUsers = [];
+
+        // Switch between login/register tabs
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('loginTab').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('registerTab').classList.add('active');
+            }
+        }
 
         // Generate random frequency
         function generateFrequency() {
             return (Math.random() * 900 + 100).toFixed(3);
         }
 
-        // Register user
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('loginPhone').value;
+            
+            // Check localStorage for existing user
+            const savedUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+            const user = savedUsers.find(u => u.phone === phone);
+            
+            if (user) {
+                currentUser = user;
+                userFrequency = user.frequency;
+                showMainContent();
+                updateStats();
+            } else {
+                alert('User not found. Please register first.');
+            }
+        });
+
+        // Register
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
             const userData = {
+                id: Date.now().toString(),
                 name: document.getElementById('userName').value,
                 state: document.getElementById('userState').value,
                 city: document.getElementById('userCity').value,
@@ -368,28 +567,49 @@
                 timestamp: new Date().toISOString()
             };
 
+            // Save to localStorage
+            const savedUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+            savedUsers.push(userData);
+            localStorage.setItem('allUsers', JSON.stringify(savedUsers));
+            
             currentUser = userData;
             userFrequency = userData.frequency;
             
-            // Update UI
-            document.getElementById('frequencyDisplay').textContent = userFrequency + ' MHz';
-            document.getElementById('connectionStatus').style.display = 'block';
-            document.getElementById('connectionStatus').className = 'status online';
-            document.getElementById('connectionStatus').textContent = 'Connected ✓';
-            
-            // Update stats
+            showMainContent();
             updateStats();
-            
-            // Simulate API call
-            console.log('User registered:', userData);
-            alert('Successfully connected to National Network!');
-            
-            // Store in localStorage
-            localStorage.setItem('currentUser', JSON.stringify(userData));
-            
-            // Simulate finding connections
-            simulateConnections();
+            alert('Successfully registered and connected to National Network!');
         });
+
+        // Show main content after login/register
+        function showMainContent() {
+            document.getElementById('authSection').classList.add('hidden');
+            document.getElementById('userProfile').classList.add('active');
+            document.getElementById('mainContent').classList.remove('hidden');
+            document.getElementById('photoGallerySection').classList.remove('hidden');
+            
+            document.getElementById('profileName').textContent = currentUser.name;
+            document.getElementById('profileLocation').textContent = `${currentUser.city}, ${currentUser.state}`;
+            document.getElementById('profileFrequency').textContent = currentUser.frequency;
+            document.getElementById('frequencyDisplay').textContent = currentUser.frequency + ' MHz';
+            
+            loadPhotos();
+            simulateConnections();
+        }
+
+        // Logout
+        function logout() {
+            currentUser = null;
+            userFrequency = null;
+            connections = [];
+            
+            document.getElementById('authSection').classList.remove('hidden');
+            document.getElementById('userProfile').classList.remove('active');
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('photoGallerySection').classList.add('hidden');
+            
+            document.getElementById('loginForm').reset();
+            document.getElementById('registerForm').reset();
+        }
 
         // Connect to frequency
         function connectToFrequency() {
@@ -397,11 +617,6 @@
             
             if (!targetFreq) {
                 alert('Please enter a frequency');
-                return;
-            }
-
-            if (!currentUser) {
-                alert('Please register first');
                 return;
             }
 
@@ -413,19 +628,17 @@
             setTimeout(() => {
                 loader.style.display = 'none';
                 message.style.display = 'block';
-                message.innerHTML = `<strong>Connected to ${targetFreq} MHz</strong><br>Searching for users on this frequency...`;
                 
-                // Simulate finding user
-                setTimeout(() => {
-                    const randomUser = {
-                        name: 'User_' + Math.floor(Math.random() * 1000),
-                        state: 'Maharashtra',
-                        city: 'Mumbai',
-                        frequency: targetFreq
-                    };
-                    connections.push(randomUser);
+                const savedUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+                const targetUser = savedUsers.find(u => u.frequency === targetFreq && u.id !== currentUser.id);
+                
+                if (targetUser) {
+                    message.innerHTML = `<strong>✓ Connected to ${targetFreq} MHz</strong><br>Found: ${targetUser.name} from ${targetUser.city}`;
+                    connections.push(targetUser);
                     updateConnectionsList();
-                }, 2000);
+                } else {
+                    message.innerHTML = `<strong>No user found on ${targetFreq} MHz</strong><br>Try another frequency`;
+                }
             }, 1500);
         }
 
@@ -454,38 +667,66 @@
                 return;
             }
 
-            if (!currentUser) {
-                alert('Please register first');
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const photoData = {
+                    id: Date.now().toString(),
+                    userId: currentUser.id,
+                    userName: currentUser.name,
+                    userLocation: `${currentUser.city}, ${currentUser.state}`,
+                    imageData: e.target.result,
+                    caption: caption,
+                    timestamp: new Date().toISOString()
+                };
+
+                const savedPhotos = JSON.parse(localStorage.getItem('allPhotos') || '[]');
+                savedPhotos.push(photoData);
+                localStorage.setItem('allPhotos', JSON.stringify(savedPhotos));
+                
+                photos.push(photoData);
+                
+                document.getElementById('uploadStatus').innerHTML = 
+                    '<div class="status online">Photo uploaded successfully! ✓</div>';
+                
+                document.getElementById('photoUpload').value = '';
+                document.getElementById('photoCaption').value = '';
+                document.getElementById('photoPreview').style.display = 'none';
+                
+                loadPhotos();
+                updateStats();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Load photos
+        function loadPhotos() {
+            const savedPhotos = JSON.parse(localStorage.getItem('allPhotos') || '[]');
+            const gallery = document.getElementById('photoGallery');
+            
+            if (savedPhotos.length === 0) {
+                gallery.innerHTML = '<p style="text-align: center; color: #999;">No photos yet</p>';
                 return;
             }
 
-            const photoData = {
-                user: currentUser.name,
-                caption: caption,
-                timestamp: new Date().toISOString(),
-                likes: 0
-            };
-
-            photos.push(photoData);
-            
-            document.getElementById('uploadStatus').innerHTML = 
-                '<div class="status online">Photo uploaded successfully! ✓</div>';
-            
-            // Reset form
-            document.getElementById('photoUpload').value = '';
-            document.getElementById('photoCaption').value = '';
-            document.getElementById('photoPreview').style.display = 'none';
-            
-            updateStats();
-            
-            console.log('Photo uploaded:', photoData);
+            gallery.innerHTML = savedPhotos.reverse().map(photo => `
+                <div class="photo-item">
+                    <img src="${photo.imageData}" alt="${photo.caption}">
+                    <div class="photo-info">
+                        <div class="caption">${photo.caption || 'No caption'}</div>
+                        <div class="user">📸 ${photo.userName} • ${photo.userLocation}</div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Update stats
         function updateStats() {
-            document.getElementById('totalUsers').textContent = Math.floor(Math.random() * 5000) + 1000;
-            document.getElementById('activeConnections').textContent = connections.length + Math.floor(Math.random() * 50);
-            document.getElementById('totalPhotos').textContent = photos.length + Math.floor(Math.random() * 1000);
+            const savedUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+            const savedPhotos = JSON.parse(localStorage.getItem('allPhotos') || '[]');
+            
+            document.getElementById('totalUsers').textContent = savedUsers.length;
+            document.getElementById('activeConnections').textContent = connections.length;
+            document.getElementById('totalPhotos').textContent = savedPhotos.length;
         }
 
         // Update connections list
@@ -493,7 +734,7 @@
             const container = document.getElementById('connectionsList');
             
             if (connections.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #999;">No active connections yet</p>';
+                container.innerHTML = '<p style="text-align: center; color: #999; font-size: 14px;">No active connections yet</p>';
                 return;
             }
 
@@ -508,38 +749,46 @@
 
         // Simulate connections
         function simulateConnections() {
-            const states = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Kolkata'];
-            const cities = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Kolkata'];
-            
             setInterval(() => {
-                if (currentUser && Math.random() > 0.7) {
-                    const newConnection = {
-                        name: 'User_' + Math.floor(Math.random() * 10000),
-                        state: states[Math.floor(Math.random() * states.length)],
-                        city: cities[Math.floor(Math.random() * cities.length)],
-                        frequency: generateFrequency()
-                    };
-                    connections.push(newConnection);
-                    updateConnectionsList();
-                    updateStats();
+                if (currentUser && Math.random() > 0.8) {
+                    const savedUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+                    const otherUsers = savedUsers.filter(u => u.id !== currentUser.id);
+                    
+                    if (otherUsers.length > 0 && connections.length < 10) {
+                        const randomUser = otherUsers[Math.floor(Math.random() * otherUsers.length)];
+                        if (!connections.find(c => c.id === randomUser.id)) {
+                            connections.push(randomUser);
+                            updateConnectionsList();
+                            updateStats();
+                        }
+                    }
                 }
-            }, 5000);
+            }, 8000);
         }
 
-        // Load saved user
+        // Check for saved session on load
         window.onload = function() {
-            const saved = localStorage.getItem('currentUser');
-            if (saved) {
-                currentUser = JSON.parse(saved);
-                userFrequency = currentUser.frequency;
-                document.getElementById('frequencyDisplay').textContent = userFrequency + ' MHz';
-                document.getElementById('connectionStatus').style.display = 'block';
-                document.getElementById('connectionStatus').className = 'status online';
-                document.getElementById('connectionStatus').textContent = 'Connected ✓';
-                simulateConnections();
+            const savedSession = localStorage.getItem('currentSession');
+            if (savedSession) {
+                const sessionData = JSON.parse(savedSession);
+                const savedUsers = JSON.parse(localStorage.getItem('allUsers') || '[]');
+                const user = savedUsers.find(u => u.id === sessionData.userId);
+                
+                if (user) {
+                    currentUser = user;
+                    userFrequency = user.frequency;
+                    showMainContent();
+                }
             }
             updateStats();
         };
+
+        // Save session
+        window.addEventListener('beforeunload', () => {
+            if (currentUser) {
+                localStorage.setItem('currentSession', JSON.stringify({ userId: currentUser.id }));
+            }
+        });
     </script>
 </body>
 </html>
